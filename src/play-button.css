@@ -1,0 +1,74 @@
+.play-button {
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.play-button:focus .play::before,
+.play-button:focus .play::after {
+  background-color: var(--primary);
+}
+
+.play::before {
+  content: "";
+  width: 50%;
+  height: 100%;
+  background-color: var(--text-color);
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: auto;
+  transition: all 0.1s linear;
+}
+
+.play::after {
+  content: "";
+  width: 50%;
+  height: 100%;
+  background-color: var(--text-color);
+  position: absolute;
+  top: 0;
+  right: 0;
+  will-change: auto;
+  transition: all 0.1s linear;
+}
+
+.playing .play::before,
+.playing .play::after {
+  width: 35%;
+}
+
+.pause::before {
+  content: "";
+  width: 150%;
+  height: 100%;
+  background-color: var(--bg-gray-color);
+  position: absolute;
+  left: 0;
+  top: -100%;
+  transform-origin: 0% 100%;
+  transform: rotate(26.5deg);
+  z-index: 2;
+  will-change: auto;
+  transition: all 0.1s linear;
+}
+
+.pause::after {
+  content: "";
+  width: 150%;
+  height: 100%;
+  background-color: var(--bg-gray-color);
+  position: absolute;
+  left: 0;
+  top: 100%;
+  transform-origin: 0% 0%;
+  transform: rotate(-26.5deg);
+  z-index: 2;
+  will-change: auto;
+  transition: all 0.1s linear;
+}
+
+.playing .pause::before,
+.playing .pause::after {
+  transform: rotate(0deg);
+}

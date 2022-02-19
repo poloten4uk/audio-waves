@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import AnimatedSection from "./animated-section";
+import AudioPlayer from "./audio-player";
+import { PlayerType } from "./constants";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="app-container">
+      <section className="fake-content">
+        <div className="players-container">
+          <AudioPlayer type={PlayerType.Instrumental} />
+          <AudioPlayer type={PlayerType.Vocal} />
+        </div>
+      </section>
+      <AnimatedSection />
+      <section className="fake-content"></section>
+    </main>
   );
 }
 
