@@ -1,13 +1,13 @@
 import React from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { wavify } from "./wavify";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const AnimatedSection = React.memo(() => {
-  const [cancellables, setCancellables] = useState([]);
+  const cancellables = useRef([]);
   const waveRef1 = useRef();
   const waveRef2 = useRef();
   const waveRef3 = useRef();
@@ -23,10 +23,6 @@ const AnimatedSection = React.memo(() => {
       scrollTrigger: {
         trigger: contentRef.current,
         start: "top 40%",
-        // scrub: 1,
-        // pin: true,
-        // anticipatePin: 1,
-        // pinSpacing: true,
       },
     });
 
@@ -95,7 +91,7 @@ const AnimatedSection = React.memo(() => {
           y: -40,
           duration: 1,
         },
-        "move",
+        "move+=1",
       )
       .to(
         waveRef5.current,
@@ -103,15 +99,7 @@ const AnimatedSection = React.memo(() => {
           y: -20,
           duration: 1,
         },
-        "move+=0.4",
-      )
-      .to(
-        waveRef4.current,
-        {
-          y: 0,
-          duration: 1,
-        },
-        "move+=0.6",
+        "move+=1",
       )
       .to(
         waveRef1.current,
@@ -119,23 +107,23 @@ const AnimatedSection = React.memo(() => {
           y: 20,
           duration: 1,
         },
-        "move",
+        "move+=1",
       )
       .to(
         waveRef3.current,
         {
-          y: 60,
+          y: 80,
           duration: 1,
         },
-        "move+=0.6",
+        "move+=1",
       )
       .to(
         waveRef2.current,
         {
-          y: 110,
+          y: 140,
           duration: 1,
         },
-        "move+=0.4",
+        "move+=1",
       )
       .addLabel("select")
       .to(
@@ -177,29 +165,29 @@ const AnimatedSection = React.memo(() => {
     const wave1Cancellable = wavify(waveRef1.current, {
       height: 70,
       bones: 5,
-      amplitude: 24,
-      speed: 0.7,
+      amplitude: 20,
+      speed: 0.5,
       container: wavesContainerREf.current,
     });
     const wave2Cancellable = wavify(waveRef2.current, {
       height: 70,
       bones: 6,
-      amplitude: 30,
+      amplitude: 22,
       speed: 0.6,
       container: wavesContainerREf.current,
     });
     const wave3Cancellable = wavify(waveRef3.current, {
       height: 70,
-      bones: 8,
+      bones: 7,
       amplitude: 20,
-      speed: 0.45,
+      speed: 0.55,
       container: wavesContainerREf.current,
     });
     const wave6Cancellable = wavify(waveRef6.current, {
       height: 70,
-      bones: 6,
-      amplitude: 16,
-      speed: 0.4,
+      bones: 4,
+      amplitude: 20,
+      speed: 0.3,
       container: wavesContainerREf.current,
     });
     const wave5Cancellable = wavify(waveRef5.current, {
@@ -211,23 +199,23 @@ const AnimatedSection = React.memo(() => {
     });
     const wave4Cancellable = wavify(waveRef4.current, {
       height: 70,
-      bones: 3,
-      amplitude: 20,
-      speed: 0.3,
+      bones: 6,
+      amplitude: 16,
+      speed: 0.4,
       container: wavesContainerREf.current,
     });
 
-    setCancellables([
+    cancellables.current = [
       wave1Cancellable,
       wave2Cancellable,
       wave3Cancellable,
       wave4Cancellable,
       wave5Cancellable,
       wave6Cancellable,
-    ]);
+    ];
 
     return () => {
-      cancellables.forEach((cancellable) => {
+      cancellables.current.forEach((cancellable) => {
         cancellable.cancel();
       });
     };
