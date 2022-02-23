@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/audio-waves/static/css/main.609f727a.css",
-    "main.js": "/audio-waves/static/js/main.ec186d7f.js",
+    "main.js": "/audio-waves/static/js/main.f64f12a3.js",
     "static/js/787.cb6476c7.chunk.js": "/audio-waves/static/js/787.cb6476c7.chunk.js",
     "index.html": "/audio-waves/index.html",
     "main.609f727a.css.map": "/audio-waves/static/css/main.609f727a.css.map",
-    "main.ec186d7f.js.map": "/audio-waves/static/js/main.ec186d7f.js.map",
+    "main.f64f12a3.js.map": "/audio-waves/static/js/main.f64f12a3.js.map",
     "787.cb6476c7.chunk.js.map": "/audio-waves/static/js/787.cb6476c7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.609f727a.css",
-    "static/js/main.ec186d7f.js"
+    "static/js/main.f64f12a3.js"
   ]
 }
